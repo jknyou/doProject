@@ -3,11 +3,13 @@ package com.ocean.direct.domain.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -47,6 +49,9 @@ public class User implements Serializable {
 	
 	@Column(nullable = false, columnDefinition="int default 1")
 	private boolean enabled;
+	
+	@OneToOne(optional = false, cascade = CascadeType.ALL)
+	private LocationInfo locationInfo;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date registTime;

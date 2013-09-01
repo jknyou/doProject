@@ -41,8 +41,6 @@ public class BoardContent implements Serializable {
 	private Long id;
 	
 	private String title;
-	private Double latitude;
-	private Double longitude;
 	
 	@Column(nullable = false, columnDefinition = "int default 0")
 	private boolean headline;
@@ -59,6 +57,9 @@ public class BoardContent implements Serializable {
 	@OneToOne(optional = false, cascade = CascadeType.ALL)
 	@PrimaryKeyJoinColumn
 	private BoardContentDetail boardContentDetail;
+	
+	@OneToOne(optional = false, cascade = CascadeType.ALL)
+	private LocationInfo locationInfo;
 	
 	@ManyToOne
 	private User user;

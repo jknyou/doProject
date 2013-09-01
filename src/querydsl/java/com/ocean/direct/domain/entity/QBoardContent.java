@@ -30,9 +30,7 @@ public class QBoardContent extends EntityPathBase<BoardContent> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final NumberPath<Double> latitude = createNumber("latitude", Double.class);
-
-    public final NumberPath<Double> longitude = createNumber("longitude", Double.class);
+    public final QLocationInfo locationInfo;
 
     public final DateTimePath<java.util.Date> registTime = createDateTime("registTime", java.util.Date.class);
 
@@ -65,7 +63,8 @@ public class QBoardContent extends EntityPathBase<BoardContent> {
         super(type, metadata, inits);
         this.board = inits.isInitialized("board") ? new QBoard(forProperty("board")) : null;
         this.boardContentDetail = inits.isInitialized("boardContentDetail") ? new QBoardContentDetail(forProperty("boardContentDetail")) : null;
-        this.user = inits.isInitialized("user") ? new QUser(forProperty("user")) : null;
+        this.locationInfo = inits.isInitialized("locationInfo") ? new QLocationInfo(forProperty("locationInfo")) : null;
+        this.user = inits.isInitialized("user") ? new QUser(forProperty("user"), inits.get("user")) : null;
     }
 
 }
